@@ -1,5 +1,5 @@
 locals {
-  name   = "oncourse-eks-cluster"
+  name   = "oncourse-cloud_devops-eks-cluster"
   region = "us-east-1"
 
   vpc_cidr = "172.31.0.0/16"
@@ -16,9 +16,7 @@ locals {
   }
 }
 
-##############
-# VPC section
-##############
+### Create a VPC for EKS
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
