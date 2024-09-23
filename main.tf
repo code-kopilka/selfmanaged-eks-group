@@ -2,20 +2,16 @@ provider "aws" {
   region = local.region
 }
 
-data "aws_availability_zones" "available" {}
-
 locals {
   name   = "oncourse-sample-eks"
   region = "us-east-1"
 
-### If you have a ready VPC, use the values below 
-# azs      = ["us-east-1a", "us-east-1b"]
-# public_subnets  = ["10.0.0.0/19", "10.0.32.0/19"]
-# private_subnets = ["10.0.64.0/19", "10.0.96.0/19"]
-# intra_subnets   = ["10.0.128.0/19", "10.0.160.0/19"]
+  vpc_cidr = "172.31.0.0/16"
+  azs      = ["us-east-1a", "us-east-1b"]
 
-  vpc_cidr = "10.0.0.0/16"
-  azs      = slice(data.aws_availability_zones.available.names, 0, 3)
+  public_subnets  = ["172.31.0.0/19", "172.31.32.0/19"]
+  private_subnets = ["172.31.64.0/19", "172.31.96.0/19"]
+  intra_subnets   = ["172.31.128.0/19", "172.31.160.0/19"] 
 
   tags = {
     example    = local.name
