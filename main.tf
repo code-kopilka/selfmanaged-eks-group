@@ -1,5 +1,5 @@
 locals {
-  name   = "oncourse-sample-eks"
+  name   = "oncourse-eks-cluster"
   region = "us-east-1"
 
   vpc_cidr = "172.31.0.0/16"
