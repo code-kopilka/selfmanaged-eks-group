@@ -33,7 +33,7 @@ module "eks" {
     attach_cluster_primary_security_group = true
   }
 
-  eks_managed_node_groups = {
+  self_managed_node_groups = {
     oncourse_cloud_devops_cluster = {
       min_size     = 1
       max_size     = 2
