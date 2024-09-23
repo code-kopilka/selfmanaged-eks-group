@@ -14,7 +14,7 @@ locals {
   intra_subnets   = ["172.31.128.0/19", "172.31.160.0/19"] 
 
   tags = {
-    example    = local.name
+    name       = local.name
     team       = "oncourse_cloud_devops"
     owner      = "shavkat.isakov"
   }
