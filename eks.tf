@@ -1,3 +1,7 @@
+locals {
+  name   = "oncourse_cloud_devops_cluster"
+}
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
