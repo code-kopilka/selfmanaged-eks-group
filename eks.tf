@@ -1,18 +1,9 @@
-locals {
-  name = "oncourse_cloud_devops_cluster"
-  tags = {
-    Environment = "dev"
-    Project     = "OnCourse Cloud DevOps"
-  }
-}
-
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
-  cluster_name                   = local.name
-  cluster_version                = "1.24"
+  cluster_name                   = "oncourse-eks-cluster"
+  cluster_version                = "1.30"
   cluster_endpoint_public_access = true
 
   cluster_addons = {
@@ -40,18 +31,13 @@ module "eks" {
   }
 
   self_managed_node_groups = {
-    oncourse_cloud_devops_cluster = {
+    oncourse_cluster = {
       min_size     = 1
       max_size     = 2
       desired_size = 1
 
       instance_types = ["t3.large"]
       capacity_type  = "SPOT"
-
-      tags = {
-        Team     = "oncourse_cloud_devops"
-        Owner    = "shavkat.isakov" 
-      }
     }
   }
 
