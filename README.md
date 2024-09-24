@@ -21,3 +21,17 @@ terraform apply --auto-approve
 ### 4. IMPORTANT!!! Clean Up Resources
 
 terraform destroy --auto-approve
+
+### 4. We can also create the EKS cluster with eksctl command line:
+Make sure eksctl is configured to have access to the AWS account
+
+eksctl create cluster \
+--name  oncourse-cluster \
+--version 1.30 \
+--region us-east-1 \
+--nodegroup-name oncourse-cluster-workers \
+--node-type t3.large \
+--nodes 1 \
+--nodes-min 1 \
+--nodes-max 2 \
+--managed
