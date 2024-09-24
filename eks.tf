@@ -1,12 +1,18 @@
 locals {
-  name   = "oncourse_cloud_devops_cluster"
+  name = "oncourse_cloud_devops_cluster"
+  tags = {
+    Environment = "dev"
+    Project     = "OnCourse Cloud DevOps"
+  }
 }
+
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
   cluster_name                   = local.name
+  cluster_version                = "1.24"
   cluster_endpoint_public_access = true
 
   cluster_addons = {
