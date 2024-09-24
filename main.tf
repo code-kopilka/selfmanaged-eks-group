@@ -10,9 +10,10 @@ locals {
   intra_subnets   = ["172.31.64.0/20", "172.31.80.0/20"] 
 
   tags = {
-    name       = local.name
-    team       = "oncourse_cloud_devops"
-    owner      = "shavkat.isakov"
+    name         = local.name
+    team         = "oncourse_cloud_devops"
+    owner        = "shavkat.isakov"
+    environment  = "dev"  
   }
 }
 
