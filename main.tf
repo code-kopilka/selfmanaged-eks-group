@@ -1,19 +1,16 @@
 locals {
-  name   = "oncourse-cloud_devops-eks-cluster"
   region = "us-east-1"
 
-  vpc_cidr = "172.31.0.0/16"
+  vpc_cidr = "10.0.0.0/16"
   azs      = ["us-east-1a", "us-east-1b"]
 
-  public_subnets  = ["172.31.0.0/20", "172.31.16.0/20"]
-  private_subnets = ["172.31.32.0/20", "172.31.48.0/20"]
-  intra_subnets   = ["172.31.64.0/20", "172.31.80.0/20"] 
+  public_subnets  = ["10.0.0.0/20", "10.0.16.0/20"]
+  private_subnets = ["10.0.32.0/20", "10.0.48.0/20"]
+  intra_subnets   = ["10.0.64.0/20", "10.0.80.0/20"] 
 
   tags = {
-    name         = local.name
-    team         = "oncourse_cloud_devops"
-    owner        = "shavkat.isakov"
-    environment  = "dev"  
+    Owner        = "shavkat.isakov"
+    Team         = "oncourse-cloud-devops"
   }
 }
 
@@ -23,7 +20,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name = local.name
+  name = "oncourse-cluster-vpc"
   cidr = local.vpc_cidr
 
   azs             = local.azs
